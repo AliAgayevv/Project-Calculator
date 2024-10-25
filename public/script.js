@@ -36,9 +36,12 @@ clearScreen.addEventListener('click', () => {
     }
 })
 
-// ! For hold, all elements clear from display screen, i will add this section at the end.
-
-// clearScreen.addEventListener('mousedown', () => {
-//     alert("hello")
-// })
+// ! Click with command (for the Windows user ctrl), all numbers delete and replace with 0
+clearScreen.addEventListener('click', (event) => {
+    if(event.ctrlKey || event.metaKey)
+    {
+        display.innerHTML = "0";
+        clearScreen.innerHTML= "AC";
+    }
+})
 
