@@ -29,9 +29,10 @@ clearScreen.addEventListener('click', () => {
     lengthOfText = display.innerHTML.length;
     textWithoutLastElement = display.innerHTML.slice(0, lengthOfText - 1);
     display.innerText = textWithoutLastElement;
-    if(lengthOfText === 1)
+    if(lengthOfText === 1 )
     {
         display.innerHTML = "0";
+        clearScreen.innerHTML = "AC"
     }
 })
 
