@@ -20,20 +20,25 @@ var answer;
 
 functionButtons.forEach((funcBtn) => {
     funcBtn.addEventListener('click', () => {
-        if(existOperator === false)
+        if(existOperator === false && funcBtn.innerHTML !== "Rand" && funcBtn.innerHTML !== "+/-" )
         {
             operator = funcBtn.innerText;
             existOperator = true;
-             numberOne = Number(display.innerHTML);
-            
-            console.log("number 1: ", numberOne)
-            console.log("operator: ", operator)
+            numberOne = Number(display.innerHTML);
+
             display.innerHTML = `${display.innerHTML}${funcBtn.innerHTML}`
             if(funcBtn.innerHTML === "=") 
                 {
                     numberTwo = display.innerHTML.slice(String(numberOne).length + 1, display.innerHTML.length);
-                    alert(numberTwo);
                 }
+        }
+        else
+        {
+            if(funcBtn.innerHTML === "+/-")
+            {
+                let numberOnTheScreen = Number(display.innerHTML);
+                display.innerHTML = numberOnTheScreen * (-1);
+            }
         }
     })
 })
@@ -57,9 +62,30 @@ showAnswer.addEventListener('click', () => {
             answer = numberOne + numberTwo;
             break;
 
+        case "%":
+            answer = numberOne % numberTwo;
+            break;
+
+
         default:
             break;
     }
+// Some special cases
+    if(numberTwo === 0 && numberOne === 0 && operator === "÷")
+    {
+        answer = "Indeterminate";
+    }
+    else if(numberTwo === 0 && operator === "÷")
+    {
+        answer = "Divide by zero ";
+    }
+
+    // When page is opened, user click "=" and answer on the screen be "undefined" for fix, i used basic logic.
+    else if(answer === undefined)
+    {
+        answer = 0;
+    }
+
     display.innerHTML = answer;
     answerIsExist = true;
     existOperator = false;
