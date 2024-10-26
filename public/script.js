@@ -18,7 +18,7 @@ var numberTwo;
 
 var operator;
 var answer;
-
+var answerIsExist;
 
 
 // Function buttons 
@@ -98,8 +98,9 @@ showAnswer.addEventListener('click', () => {
 
     display.innerHTML = answer;
     // I use this variable on the addeventListener for the clickScreen
-    answerIsExist = true;
+    
     existOperator = false;
+    answerIsExist = true;
 })
 
 // Add number to display
